@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div class="particulas">
+
+    </div>
     <nav class="navegacao">
         <ul class="menu">
             <li>
@@ -27,7 +30,7 @@
     </nav>
     <main id="inicio" class="cabecalho">
         <img src="img/IMG_1311.JPEG" alt="Foto de Daniel" class="foto-perfil">
-        <h1>Olá, eu sou Daniel</h1>
+        <h1>Daniel Santana</h1>
         <p class="cabecalho-sub-tiutlo">Desenvolvedor Front-End</p>
     </main>
 
@@ -69,14 +72,34 @@
     </div>
     </section>
     <section id="contato" class="contato">
-        <h2 class="contato-titulo">Contato</h2>
-        <form class="formulario-contato" id="formulario">
+        <h2 class="contato-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario" onsubmit="EnviarWhats(event)">
             <div class="grupo-form">
-                <input name="Nome" class="campo-form">
+                <input placeholder="Nome" class="campo-form" id="nome">
             </div>
             <div class="grupo-form">
-                <textarea class="" placeholder="Digite sua mensagem"></textarea>
+                <textarea class="campo-form" placeholder="Digite sua mensagem" rows="6" id="mensagem"></textarea>
             </div>
-        </form>>
+
+            <button type="submit" class="botao-form">Enviar Whatsapp</button>
+        </form>
+
+        <script>
+            function EnviarWhats(event) {
+                event.preventDefault()
+            
+            const nome = document.getElementById('nome') .value;
+            const mensagem = document.getElementById('mensagem');
+            const telefone = '558189989690';
+
+            const texto = `Olá, meu nome é ${nome.Daniel} e minha mensagem é: ${mensagem.value}`;
+            const msgFormulario = encodeURIComponent(texto);
+
+            const url = `https://whatsa.me/${telefone}/?t=${msgFormulario}`;
+
+            window.open(url, '_blank');
+            }
+
+        </script>
 
 </html>
